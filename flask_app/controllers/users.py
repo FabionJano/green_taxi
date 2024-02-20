@@ -65,7 +65,7 @@ def contact():
             return redirect("/verify/email")
 
     return render_template(
-        "contact.html"
+        "contacts.html"
     )
 
 @app.route("/login")
