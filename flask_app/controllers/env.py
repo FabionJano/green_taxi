@@ -1,2 +1,2 @@
-ADMINEMAIL = "hotfilxa@gmail.com"
-PASSWORD = "kmivkusdzbhrhgas"
+ADMINEMAIL = "gr33ntaxi@gmail.com"
+PASSWORD = "jcfdrzkioglzcpxw"
