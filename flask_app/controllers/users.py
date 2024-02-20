@@ -31,3 +31,15 @@ def dashboard():
     return render_template(
         "index.html"
     )
+
+@app.route("/getTaxi")
+def getTaxi():
+    if "user_id" in session:
+        data = {"user_id": session["user_id"]}
+        loggedUser = User.get_user_by_id(data)
+        if loggedUser["isVerified"] == 0:
+            return redirect("/verify/email")
+
+    return render_template(
+        "get_taxi.html"
+    )
