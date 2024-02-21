@@ -1,0 +1,40 @@
+.form-taxi-short2{
+    position: relative;
+    left: 700px;
+    bottom: 550px;
+    background-color: white;
+    width: 500px;
+    height: 450px;
+    border-radius: 7px;
+}
+.form-taxi-short2 h2{
+    font-size: 22px;
+    position: relative;
+    bottom: 25px;
+}
+.form-taxi-short2 span{
+    font-size: 50px;
+    position: relative;
+    bottom: 130px;
+}
+.form-taxi-short2 h3{
+    font-size: 18px;
+    position: relative;
+    bottom: 60px;
+    color: rgb(72, 166, 72);
+}
+.form-taxi-short2 p{
+    position: relative;
+    bottom: 70px;
+    font-size: 15px;
+    margin-bottom: 2px;
+}
+.highway{
+    position: relative;
+    bottom: 50px;
+}
+.form-taxi-short2 h4{
+    position: relative;
+    bottom: 140px;
+    color: rgb(72, 166, 72);
+}

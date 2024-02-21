@@ -8,6 +8,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<link rel="icon" type="image/png" href="{{url_for('static',filename='images/favicon.png')}}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='/css/pollution.css') }}">
 
 	<title>TaxiPark</title>
 
@@ -109,6 +110,22 @@
 						<input type="submit" value="Get Taxi" class="btn btn-lg btn-yellow aligncenter">
 						<input type="hidden" id="type" name="type" value="2" class="ajaxField">
 					</form>
+				</div>
+			</section>
+			<section class="form-taxi-short2 ">
+				<div class="container2">
+					<h2>How are you improving your city's air?</h2>
+					<h3>In city:</h3>
+					<p>petrol: 1km = 192 g of CO2</p>
+					<p>diesel: 1km = 172 g of CO2</p>
+					<p>A vehicle emits about 4.6 tons of CO2 per year</p>
+					<div class="highway">
+						<h3>In highway:</h3>
+						<p>diesesl: 1 km = 0.100 g of CO2</p>
+						<p>petrol: 1 km = 0.120 g of CO2</p>
+					</div>
+					<h4>In electric cars:</h4>
+					<span>0</span>
 				</div>
 			</section>
 
