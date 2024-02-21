@@ -32,8 +32,18 @@
 				</div>
 				<div class="col-lg-6 col-md-6 contact-form">
 							
-					<form class="form form-sm form-validate">
+					<form class="form form-sm form-validate"  action="/sendmail" method="post">
 						<h3 class="aligncenter">Send Message</h3>
+						{%if loggedUser%}
+						<div class="form-group">
+							<label>Your name <span class="red">*</span></label>
+							<input type="text" id="name" name="name" placeholder="Your name" value="{{loggedUser.first_name}} {{loggedUser.last_name}}" class="ajaxField required">
+						</div>
+						<div class="form-group">
+							<label>E-mail <span class="red">*</span></label>
+							<input type="text" id="email" name="email" placeholder="E-mail" class="ajaxField required" value="{{loggedUser.email}}">
+						</div>
+						{% else %}
 						<div class="form-group">
 							<label>Your name <span class="red">*</span></label>
 							<input type="text" id="name" name="name" placeholder="Your name" class="ajaxField required">
@@ -42,12 +52,12 @@
 							<label>E-mail <span class="red">*</span></label>
 							<input type="text" id="email" name="email" placeholder="E-mail" class="ajaxField required">
 						</div>
+						{% endif %}
 						<div class="form-group">						
 							<label>Message <span class="red">*</span></label>
-							<textarea id="text" name="text" placeholder="Enter Message" class="ajaxField required"></textarea>
+							<textarea id="text" name="message" placeholder="Enter Message" class="ajaxField required"></textarea>
 						</div>
 						<input type="submit" name="send" value="Send" class="btn btn-yellow aligncenter btn-lg">
-						<input type="hidden" id="type" name="type" value="1" class="ajaxField">
 					</form>						
 				</div>
 			</div>

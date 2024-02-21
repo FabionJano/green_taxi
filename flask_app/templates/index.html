@@ -46,8 +46,11 @@
 						<li><a href="/getTaxi">Get Taxi</a></li>
 						<li><a href="/blog">Our Blog</a></li>
 						<li><a href="/contact">Contacts</a></li>
-						<li><a href="/login">LogIn </a></li>
-							
+						{% if loggedUser %}
+						<li><a href="/logout">Logout </a></li>
+						{% else %}
+						<li><a href="/loginPage">Login </a></li>
+						{% endif %}
 					</ul>
 				</div>		
 			</div>

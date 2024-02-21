@@ -91,11 +91,23 @@ from .env import PASSWORD
 def index():
     return render_template('index.html')
 
+@app.route('/dashboard')
+def dashboard():
+    if 'user_id' not in session:
+        return redirect('/')
+    data = {
+        'user_id': session['user_id']
+    }
+    loggedUser = User.get_user_by_id(data)
+    if loggedUser['isVerified'] == 0:
+        return redirect('/verify/email')
+    return (render_template('index.html', loggedUser=loggedUser))
+
 
 @app.route("/logout")
 def logout():
     session.clear()
-    return redirect("/index")
+    return redirect("/")
 
 
 @app.route("/registerPage")
@@ -182,7 +194,7 @@ def register():
 
     user = User.get_user_by_email(data)
     session["user_id"] = user["id"]
-    return jsonify({"valid": True, "path": "/verify/email"})#here
+    return redirect('/verify/email')
 
 
 @app.route("/verify/email")
@@ -192,7 +204,7 @@ def verifyEmail():
     data = {"user_id": session["user_id"]}
     user = User.get_user_by_id(data)
     if user["isVerified"] == 1:
-        return redirect("/index")
+        return redirect("/dashboard")
     return render_template("verifyEmail.html", loggedUser=user)
 
 
@@ -246,4 +258,76 @@ def activateAccount():
         return redirect(request.referrer)
 
     User.activateAccount(data)
-    return redirect("/index")
+    return redirect("/")
+
+
+# Log In Route
+@app.route('/loginPage')
+def loginPage():
+    if 'user_id' in session:
+        return redirect('/dashboard')
+    return render_template('login.html')
+
+
+# Control Log In Form
+@app.route('/login', methods=['POST'])
+def login():
+    if 'user_id' in session:
+        return redirect('/dashboard')
+    if not User.get_user_by_email(request.form):
+        flash('This email doesnt appear to be in our system! Try another one!', 'emailLogin')
+        return redirect(request.referrer)
+
+    user = User.get_user_by_email(request.form)
+    if user:
+        if not bcrypt.check_password_hash(user['password'], request.form['password']):
+            flash('Wrong Password', 'passwordLogin')
+            return redirect(request.referrer)
+
+    session['user_id'] = user['id']
+
+    return redirect('/verify/email')
+
+
+@app.route("/contact")
+def contact():
+    if "user_id" not in session:
+        return render_template("contacts.html")
+    data = {"user_id": session["user_id"]}
+    loggedUser = User.get_user_by_id(data)
+    return render_template("contacts.html", loggedUser=loggedUser)
+
+
+@app.route("/sendmail", methods=["POST"])
+def senadmail():
+    # if "user_id" not in session:
+    #     return redirect("/")
+    name = request.form.get('name')
+    email = request.form.get('email')
+    message = request.form.get('message')
+    LOGIN = ADMINEMAIL
+    TOADDRS = ADMINEMAIL
+    SENDER = ADMINEMAIL
+    SUBJECT = "Conatct"
+    msg = "From: %s\r\nTo: %s\r\nSubject: %s\r\n\r\n" % (
+        (SENDER),
+        "".join(TOADDRS),
+        SUBJECT,
+    )
+    msg += (
+        f"Name: {name}\nEmail: {email}\nMessage: {message}"
+    )
+    server = smtplib.SMTP("smtp.gmail.com", 587)
+    server.set_debuglevel(1)
+    server.ehlo()
+    server.starttls()
+    server.login(LOGIN, PASSWORD)
+    server.sendmail(SENDER, TOADDRS, msg)
+    server.quit()
+    
+    return redirect(request.referrer)
+
+@app.route('/about')
+def about():
+    return render_template("about.html")
+

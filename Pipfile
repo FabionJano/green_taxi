@@ -11,6 +11,7 @@ bcrypt = "*"
 flask-cors = "*"
 charset-normalizer = "*"
 requests = "*"
+cryptography = "*"
 
 [dev-packages]
 
