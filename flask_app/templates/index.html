@@ -48,9 +48,11 @@
 							<span class="icon-bar bottom-bar"></span>
 						</button>
 						<ul class="nav navbar-nav">
-							<li><a href="/dashboard">Home </a></li>
-							<li><a href="/getTaxi">Get Taxi</a></li>
-							<li><a href="/blog">Our Blog</a></li>
+							<li><a href="/dashboard">Home</a></li>
+							<li><a href="/about">About Us</a></li>
+							<li><a href="/requests">Requests</a></li>
+							<li><a href="/Get Taxi">Get Taxi</a></li>
+							<!-- <li><a href="/blog">Our Blog</a></li> -->
 							<li><a href="/contact">Contacts</a></li>
 							{% if loggedUser %}
 							<li><a href="/logout">Logout </a></li>
@@ -107,8 +109,7 @@
 								</div>
 							</div>
 						</div>
-						<input type="submit" value="Get Taxi" class="btn btn-lg btn-yellow aligncenter">
-						<input type="hidden" id="type" name="type" value="2" class="ajaxField">
+						<a type="submit" href="/loginPage" class="btn btn-lg btn-yellow aligncenter">Get Taxi</a>
 					</form>
 				</div>
 			</section>

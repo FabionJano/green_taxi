@@ -331,3 +331,14 @@ def senadmail():
 def about():
     return render_template("about.html")
 
+
+@app.route('/getTaxi')
+def getTaxi():
+    if 'user_id' in session:
+        data = {
+        'user_id': session['user_id']
+        }
+        loggedUser = User.get_user_by_id(data)
+        return render_template('get_taxi.html', loggedUser = loggedUser)
+    return render_template('get_taxi.html')
+
