@@ -4,20 +4,29 @@
 	<section id="page-contacts">
 		<div class="container mx-auto">
 				<div class="col-lg-6 col-md-6 contact-form">
-					<form class="form form-sm form-validate">
+					<form class="form form-sm form-validate" action="/register" method="POST" validation>
 						<h3 class="aligncenter">Sign up</h3>
 						<div class="form-group">
 							<label>First Name <span class="red">*</span></label>
-							<input type="text" id="name" name="name" placeholder="Your name" class="ajaxField required">
+							<input type="text" id="name" name="first_name" placeholder="Your name" class="ajaxField required">
+						</div>
+						<div class="form-group">
+							<label>Last Name <span class="red">*</span></label>
+							<input type="text" id="name" name="last_name" placeholder="Your last name" class="ajaxField required">
 						</div>
 						<div class="form-group">
 							<label>E-mail <span class="red">*</span></label>
 							<input type="text" id="email" name="email" placeholder="E-mail" class="ajaxField required">
 						</div>
-						<div class="form-group">						
-							<label>Message <span class="red">*</span></label>
-							<textarea id="text" name="text" placeholder="Enter Message" class="ajaxField required"></textarea>
+						<div class="form-group">
+							<label>Password<span class="red">*</span></label>
+							<input type="password" id="name" name="password" placeholder="Password" class="ajaxField required">
 						</div>
+						<div class="form-group">
+							<label>Confirm Password<span class="red">*</span></label>
+							<input type="password" id="name" name="password" placeholder="Confirm Password" class="ajaxField required">
+						</div>
+						
 						<input type="submit" name="send" value="Send" class="btn btn-yellow aligncenter btn-lg">
 						<input type="hidden" id="type" name="type" value="1" class="ajaxField">
 					</form>						
@@ -25,6 +34,38 @@
 			</div>
 		</div>
 	</section>
+
+	<script>
+		const formReg = document.querySelector('#formReg');
+
+		// Add an event listener to the form submit event.
+		formReg.addEventListener('submit', function (event) {
+			// Prevent the default form submission.
+			event.preventDefault();
+
+			// Get the form data.
+			const formData = new FormData(formReg);
+
+			// Send the form data to the server using a POST request.
+			fetch('/register', {
+				method: 'POST',
+				body: formData
+			})
+				.then(response => response.json())
+				.then(data => {
+					if (data.valid) {
+						window.location.href = data.path;
+					} else {
+						for (const field in data.errors) {
+							const inputField = document.querySelector(`#formReg input[name="${field}"]`);
+							inputField.value = ""
+							inputField.placeholder = data.errors[field];
+							inputField.classList.add('is-invalid');
+						}
+					}
+				});
+		});
+	</script>
 
 
 	{%endblock%}

@@ -102,19 +102,19 @@ class User:
 
         if len(user["first_name"]) < 2:
             flash("First name should be more than 2 characters!", "firstNameRegister")
-            is_valid = False
+            valid = False
         if len(user["last_name"]) < 2:
             flash("Last name should be more than 2 characters!", "lastNameRegister")
-            is_valid = False
+            valid = False
         if not EMAIL_REGEX.match(user["email"]):
             flash("Invalid email address!", "emailRegister")
-            is_valid = False
+            valid = False
         data = {
             'email' : request.form['email']
         }
         if User.get_user_by_email(data):
             flash('Email already exists','emailexists')
-            is_valid = False
+            valid = False
         return valid
     
     @classmethod
