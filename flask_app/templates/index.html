@@ -17,47 +17,54 @@
 	<link href="{{url_for('static',filename='css/swipebox.css')}}" rel="stylesheet" type="text/css" />
 	<link href="{{url_for('static',filename='css/zoomslider.css')}}" rel="stylesheet" type="text/css" />
 	<link href="{{url_for('static',filename='css/stylee45e.css')}}" rel="stylesheet" type="text/css" />
-	<link rel="stylesheet" href="../../ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" type="text/css" />
+	<link rel="stylesheet" href="../../ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"
+		type="text/css" />
 
-	<link href="https://fonts.googleapis.com/css?family=Fira+Sans+Condensed:700,800%7COpen+Sans:400,600,700" rel="stylesheet" type="text/css" /> 
+	<link href="https://fonts.googleapis.com/css?family=Fira+Sans+Condensed:700,800%7COpen+Sans:400,600,700"
+		rel="stylesheet" type="text/css" />
 </head>
+
 <body>
-	<div class="navbar-gray-yellow-transparent">	<div class="nav-wrapper" id="nav-wrapper">
-		<nav class="navbar navbar-static navbar-affix" data-spy="affix">
-			<div class="container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar top-bar"></span>
-						<span class="icon-bar middle-bar"></span>
-						<span class="icon-bar bottom-bar"></span>
-					</button>
-					<a class="logo" href="index.html"><img src="{{ url_for('static', filename='images/newL.png')}}" alt="TaxiPark"></a>
+	<div class="navbar-gray-yellow-transparent">
+		<div class="nav-wrapper" id="nav-wrapper">
+			<nav class="navbar navbar-static navbar-affix" data-spy="affix">
+				<div class="container">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar top-bar"></span>
+							<span class="icon-bar middle-bar"></span>
+							<span class="icon-bar bottom-bar"></span>
+						</button>
+						<a class="logo" href="index.html"><img src="{{ url_for('static', filename='images/newL.png')}}"
+								alt="TaxiPark"></a>
+					</div>
+					<div id="navbar" class="navbar-collapse collapse">
+						<button type="button" class="navbar-toggle collapsed">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar top-bar"></span>
+							<span class="icon-bar middle-bar"></span>
+							<span class="icon-bar bottom-bar"></span>
+						</button>
+						<ul class="nav navbar-nav">
+							<li><a href="/dashboard">Home </a></li>
+							<li><a href="/getTaxi">Get Taxi</a></li>
+							<li><a href="/blog">Our Blog</a></li>
+							<li><a href="/contact">Contacts</a></li>
+							{% if loggedUser %}
+							<li><a href="/logout">Logout </a></li>
+							{% else %}
+							<li><a href="/loginPage">Login </a></li>
+							{% endif %}
+						</ul>
+					</div>
 				</div>
-				<div id="navbar" class="navbar-collapse collapse">
-					<button type="button" class="navbar-toggle collapsed">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar top-bar"></span>
-						<span class="icon-bar middle-bar"></span>
-						<span class="icon-bar bottom-bar"></span>
-					</button>
-					<ul class="nav navbar-nav">
-						<li><a href="/dashboard">Home </a></li>
-						<li><a href="/getTaxi">Get Taxi</a></li>
-						<li><a href="/blog">Our Blog</a></li>
-						<li><a href="/contact">Contacts</a></li>
-						{% if loggedUser %}
-						<li><a href="/logout">Logout </a></li>
-						{% else %}
-						<li><a href="/loginPage">Login </a></li>
-						{% endif %}
-					</ul>
-				</div>		
-			</div>
-		</nav>
+			</nav>
+		</div>
 	</div>
-</div>
-	<div id="homepage-block-3" data-zs-speed="12000" data-zs-interval="7000" data-zs-bullets="false" data-zs-switchSpeed="4000" data-zs-src='["static/images/_homepage-3-2-bg.jpg", "static/images/_homepage-3-bg.jpg"]'>
+	<div id="homepage-block-3" data-zs-speed="12000" data-zs-interval="7000" data-zs-bullets="false"
+		data-zs-switchSpeed="4000"
+		data-zs-src='["static/images/_homepage-3-2-bg.jpg", "static/images/_homepage-3-bg.jpg"]'>
 		<div class="container">
 
 			<section class="form-taxi-short">
@@ -74,24 +81,28 @@
 						<div class="row form-with-labels">
 							<div class="col-md-6">
 								<div class="form-group">
-									<input type="text" name="from" value="" placeholder="From Address..." class="ajaxField required"><span class="fa fa-map-marker"></span>
+									<input type="text" name="from" value="" placeholder="From Address..."
+										class="ajaxField required"><span class="fa fa-map-marker"></span>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
-									<input type="text" name="to" value="" placeholder="To..." class="ajaxField"><span class="fa fa-map-marker"></span>
+									<input type="text" name="to" value="" placeholder="To..." class="ajaxField"><span
+										class="fa fa-map-marker"></span>
 								</div>
 							</div>
 						</div>
-						<div class="row form-with-labels">							
+						<div class="row form-with-labels">
 							<div class="col-md-6">
 								<div class="form-group">
-									<input type="text" name="phone" value="" placeholder="Phone Number" class="ajaxField required"><span class="fa fa-phone"></span>
+									<input type="text" name="phone" value="" placeholder="Phone Number"
+										class="ajaxField required"><span class="fa fa-phone"></span>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
-									<input type="text" name="text" value="" placeholder="Date and Time" class="ajaxField"><span class="fa fa-calendar"></span>
+									<input type="text" name="text" value="" placeholder="Date and Time"
+										class="ajaxField"><span class="fa fa-calendar"></span>
 								</div>
 							</div>
 						</div>
@@ -117,7 +128,7 @@
 				</div>
 				<div class="col-lg-2 col-md-6  col-sm-6">
 					<a href="#" class="btn btn-black-bordered btn-lg pull-right">Our Tariffs</a>
-				</div>				
+				</div>
 			</div>
 		</div>
 	</div>
@@ -129,7 +140,8 @@
 			<div class="row">
 				<div class="col-md-3 col-sm-6">
 					<div class="item matchHeight">
-						<div class="image"><img src="{{ url_for('static', filename='images/_tariff-1.png') }}" class="full-width" alt="Tariff"></div>
+						<div class="image"><img src="{{ url_for('static', filename='images/_tariff-1.png') }}"
+								class="full-width" alt="Tariff"></div>
 						<h4>Standart</h4>
 						<p>Standard sedan for a drive around the city at your service</p>
 						<div class="price">€1<span>/km</span></div>
@@ -137,7 +149,8 @@
 				</div>
 				<div class="col-md-3 col-sm-6">
 					<div class="item matchHeight">
-						<div class="image"><img src="{{ url_for('static', filename='images/_tariff-2.png')}}" class="full-width" alt="Tariff"></div>
+						<div class="image"><img src="{{ url_for('static', filename='images/_tariff-2.png')}}"
+								class="full-width" alt="Tariff"></div>
 						<h4>Business</h4>
 						<p>Standard sedan for a drive around the city at your service</p>
 						<div class="price">€2<span>/km</span></div>
@@ -145,7 +158,8 @@
 				</div>
 				<div class="col-md-3 col-sm-6">
 					<div class="item matchHeight vip">
-						<div class="image"><img src="{{ url_for('static', filename='images/_tariff-3.png')}}" class="full-width" alt="Tariff"></div>
+						<div class="image"><img src="{{ url_for('static', filename='images/_tariff-3.png')}}"
+								class="full-width" alt="Tariff"></div>
 						<h4 class="red">Vip</h4>
 						<p>Standard sedan for a drive around the city at your service</p>
 						<div class="price">€3<span>/km</span></div>
@@ -153,24 +167,26 @@
 				</div>
 				<div class="col-md-3 col-sm-6">
 					<div class="item matchHeight">
-						<div class="image"><img src="{{ url_for('static', filename='images/_tariff-4.png')}}" class="full-width" alt="Tariff"></div>
+						<div class="image"><img src="{{ url_for('static', filename='images/_tariff-4.png')}}"
+								class="full-width" alt="Tariff"></div>
 						<h4>Bus-minivan</h4>
 						<p>Standard sedan for a drive around the city at your service</p>
 						<div class="price">€3<span>/km</span></div>
 					</div>
-				</div>												
+				</div>
 			</div>
 		</div>
-	</section>						
+	</section>
 
-	
+
 
 	<section id="block-footer">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 col-ms-6">
 					<h4>About us</h4>
-					<p>Our goal is to make your trips cheaper and the air cleaner. So you and the environment profit from it. </p>
+					<p>Our goal is to make your trips cheaper and the air cleaner. So you and the environment profit
+						from it. </p>
 
 					<div class="social-small social-yellow">
 						<a href="#" class="fa fa-twitter"></a>
@@ -178,9 +194,9 @@
 						<a href="#" class="fa fa-instagram"></a>
 						<a href="#" class="fa fa-google-plus"></a>
 						<a href="#" class="fa fa-pinterest"></a>
-					</div>					
+					</div>
 				</div>
-				<div class="col-lg-5 col-md-5 hidden-md hidden-sm hidden-xs hidden-ms">					
+				<div class="col-lg-5 col-md-5 hidden-md hidden-sm hidden-xs hidden-ms">
 					<h4>Explore</h4>
 					<div class="row">
 						<div class="col-md-5">
@@ -188,18 +204,18 @@
 								<li class="active"><a href="#">Get Taxi</a></li>
 								<li><a href="#">Tariffs</a></li>
 
-							</ul>						
+							</ul>
 						</div>
 						<div class="col-md-5">
 							<ul class="nav navbar-nav">
 								<li><a href="#">Contacts</a></li>
 								<li><a href="#">Pages</a></li>
-							</ul>						
-						</div>						
+							</ul>
+						</div>
 					</div>
 
 				</div>
-				<div class="col-lg-3 col-md-6 col-sm-6 col-ms-6">					
+				<div class="col-lg-3 col-md-6 col-sm-6 col-ms-6">
 					<h4>Contact us</h4>
 					<p><span class="yellow">Address:</span> Sheshi Wilson, Tirana</p>
 
@@ -207,8 +223,8 @@
 						<li><span class="fa fa-phone"></span>800-5-800</li>
 						<li><span class="fa fa-envelope"></span><a href="#">GreenTaxi@al</a></li>
 						<li><span class="fa fa-skype"></span>GreenTaxi</li>
-					</ul>					
-				</div>		
+					</ul>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -220,40 +236,61 @@
 		</div>
 	</footer>
 
-	<script>var base_href = 'http://like-themes.com/';</script>
+	<script>
+		var base_href = 'http://like-themes.com/';
+	</script>
 	<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
 
 	<script src="{{url_for('static',filename='ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js')}}></script>	
 
-	<script type="text/javascript" src="{{url_for('static',filename='js/plugins.min.js')}}"></script>		
-	
-    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+	<script type=" text/javascript" src="{{url_for('static',filename='js/plugins.min.js')}}"></script>
 
-	<!--script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTRSHf8sjMCfK9PHPJxjJkwrCIo5asIzE"></script-->	
+	<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+
+	<!--script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTRSHf8sjMCfK9PHPJxjJkwrCIo5asIzE"></script-->
 	<script type="text/javascript" src="{{url_for('static',filename='js/scripts.js')}}"></script>
 
 	<script>
-        var base_href = 'http://like-themes.com/';
-    </script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+		var base_href = 'http://like-themes.com/';
+	</script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
 
-    <script src="{{ url_for('static', filename='ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/plugins.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js') }}">
+	</script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/plugins.min.js') }}"></script>
 
-    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
 
-    <!--script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTRSHf8sjMCfK9PHPJxjJkwrCIo5asIzE"></script-->
-    <script type="text/javascript" src="{{url_for('static',filename='js/scripts.js')}}"></script
-	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	  })(window,document,'script','../../www.google-analytics.com/analytics.js','ga');
+	<script>
+		var base_href = 'http://like-themes.com/';
+	</script>
+	<script type="text/javascript" src="{{url_for('static',filename='js/jquery.min.js')}}"></script>
 
-	  ga('create', 'UA-91006724-1', 'auto');
-	  ga('send', 'pageview');
+	<script type="text/javascript" src="{{url_for('static',filename='js/plugins.min.js')}}"></script>
+
+	<script src="{{url_for('static',filename='js/map-style.js')}}"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTRSHf8sjMCfK9PHPJxjJkwrCIo5asIzE"></script>
+	<script type="text/javascript" src="{{url_for('static',filename='js/scripts.js')}}"></script>
+	<!--script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTRSHf8sjMCfK9PHPJxjJkwrCIo5asIzE"></script-->
+	<script>
+		(function (i, s, o, g, r, a, m) {
+			i['GoogleAnalyticsObject'] = r;
+			i[r] = i[r] || function () {
+				(i[r].q = i[r].q || []).push(arguments)
+			}, i[r].l = 1 * new Date();
+			a = s.createElement(o),
+				m = s.getElementsByTagName(o)[0];
+			a.async = 1;
+			a.src = g;
+			m.parentNode.insertBefore(a, m)
+		})(window, document, 'script', '../../www.google-analytics.com/analytics.js', 'ga');
+
+		ga('create', 'UA-91006724-1', 'auto');
+		ga('send', 'pageview');
 	</script>
 
 </body>
 
 <!-- Mirrored from like-themes.com/taxipark/homepage-3.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 20 Feb 2024 11:09:44 GMT -->
+
 </html>
