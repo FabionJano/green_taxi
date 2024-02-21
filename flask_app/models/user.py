@@ -14,7 +14,7 @@ class User:
         self.last_name = data["last_name"]
         self.email = data["email"]
         self.password = data["password"]
-        self.admin = data["admin"]
+        self.role = data["role"]
         self.verificationCode = data["verificationCode"]
         self.isVerified = data["isVerified"]
         self.created_at = data["created_at"]
@@ -25,7 +25,7 @@ class User:
     def save(cls, data):
         query = (
             "INSERT INTO users (first_name, last_name, email, password, isVerified, "
-            "verificationCode, admin) VALUES ( %(first_name)s, %(last_name)s, %(email)s, "
+            "verificationCode, role) VALUES ( %(first_name)s, %(last_name)s, %(email)s, "
             "%(password)s, %(isVerified)s, %(verificationCode)s, 0);"
         )
         return connectToMySQL(cls.db_name).query_db(query, data)

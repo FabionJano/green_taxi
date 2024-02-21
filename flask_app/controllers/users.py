@@ -79,3 +79,29 @@ def login():
     return render_template(
         "login.html"
     )
+# ===========================================================
+
+@app.errorhandler(404)
+def invalid_route(e):
+    return render_template("404.html")
+
+
+# Intro
+@app.route("/")
+def index():
+    # if "user_id" not in session:
+    #     return redirect("/dashboard")
+    return redirect("/dashboard")
+
+
+@app.route("/logout")
+def logout():
+    session.clear()
+    return redirect("/dashboard")
+
+
+@app.route("/registerPage")
+def registerPage():
+    if "user_id" in session:
+        return redirect("/")
+    return render_template("signup.html")
